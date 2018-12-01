@@ -2,5 +2,5 @@
 applications:
   - name: Julekalender
     memory: 1024M
-    buildpacks: staticfile_buildpack
+    buildpack: staticfile_buildpack
     path: dist
