@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {KalenderService} from "../../services/kalender.service";
-import {faCoffee} from "@fortawesome/free-solid-svg-icons";
+import {faGift} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-vinner',
@@ -9,7 +9,7 @@ import {faCoffee} from "@fortawesome/free-solid-svg-icons";
 })
 export class VinnerComponent implements OnInit {
 
-  faCoffee = faCoffee;
+    faGift = faGift;
   private title = "Ukjent";
   private imgUrl = '../../../assets/alvene/ukjent.jpg';
     constructor(private kalenderService: KalenderService) { }
