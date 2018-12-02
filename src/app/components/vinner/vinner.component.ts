@@ -21,7 +21,7 @@ export class VinnerComponent implements OnInit {
         this.kalenderService.getDagensVinner().subscribe((dagensVinner: any) => {
             if(dagensVinner !== null){
                 this.imgUrl = dagensVinner.alv.bildeUrl;
-                this.title = dagensVinner.alv.title;
+                this.title = dagensVinner.alv.navn;
             }
         } )
     }

@@ -15,12 +15,12 @@ export class KalenderService {
     }
 
     getVinner(passord: string){
-        const httpOptions = {
+        let httpOptions = {
             headers: new HttpHeaders({
                 'passord':  passord
             })
         };
-        return this.http.get(this.url + "/vinner",httpOptions);
+        return this.http.get(this.url + "/vinner", httpOptions);
     }
 
     getDagensVinner(){
