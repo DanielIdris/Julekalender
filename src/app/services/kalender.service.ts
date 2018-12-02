@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {catchError} from "rxjs/operators";
 
 @Injectable()
 export class KalenderService {
@@ -13,7 +14,16 @@ export class KalenderService {
         return this.http.get(this.url + "/godjul");
     }
 
-    getVinner(){
-        return this.http.get(this.url + "/vinner");
+    getVinner(passord: string){
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'passord':  passord
+            })
+        };
+        return this.http.get(this.url + "/vinner",httpOptions);
+    }
+
+    getDagensVinner(){
+        return this.http.get(this.url + "/dagens-vinner");
     }
 }

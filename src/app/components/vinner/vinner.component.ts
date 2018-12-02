@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {KalenderService} from "../../services/kalender.service";
 import {faGift} from "@fortawesome/free-solid-svg-icons";
 
@@ -12,18 +12,33 @@ export class VinnerComponent implements OnInit {
     faGift = faGift;
     title = "Ukjent";
     imgUrl = '../../../assets/alvene/ukjent.jpg';
+    @ViewChild('drumroll') el:ElementRef;
 
     constructor(private kalenderService: KalenderService) {
     }
 
     ngOnInit() {
+        this.kalenderService.getDagensVinner().subscribe((dagensVinner: any) => {
+            if(dagensVinner !== null){
+                this.imgUrl = dagensVinner.alv.bildeUrl;
+                this.title = dagensVinner.alv.title;
+            }
+        } )
     }
 
-    trekkVinner() {
-        this.kalenderService.getVinner().subscribe((alv: any) => {
+    trekkVinner(passord: string) {
+        this.kalenderService.getVinner(passord).subscribe(async (alv: any) => {
+            this.el.nativeElement.playbackRate = 1.2;
+            this.el.nativeElement.play();
+
+            await this.sleep(5000);
             this.imgUrl = alv.bildeUrl;
             this.title = alv.navn;
         })
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
 }
