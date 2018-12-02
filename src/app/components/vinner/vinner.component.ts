@@ -28,6 +28,9 @@ export class VinnerComponent implements OnInit {
 
     trekkVinner(passord: string) {
         this.kalenderService.getVinner(passord).subscribe(async (alv: any) => {
+            if(alv === null){
+                return;
+            }
             this.el.nativeElement.playbackRate = 1.2;
             this.el.nativeElement.play();
 
