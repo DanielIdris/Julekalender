@@ -31,16 +31,18 @@ export class VinnerComponent implements OnInit {
     }
 
     trekkVinner(passord: string) {
-        this.kalenderService.getVinner(passord).subscribe(async (alv: any) => {
-            if(alv === null){
+        this.kalenderService.getVinner(passord).subscribe(async (dagensVinner: any) => {
+            if(dagensVinner === null){
                 return;
             }
             this.el.nativeElement.playbackRate = 1.2;
             this.el.nativeElement.play();
 
             await this.sleep(5000);
-            this.imgUrl1 = alv.bildeUrl;
-            this.title1 = alv.navn;
+            this.imgUrl1 = dagensVinner.alv1.bildeUrl;
+            this.title1= dagensVinner.alv1.navn;
+            this.imgUrl2 = dagensVinner.alv2.bildeUrl;
+            this.title2 = dagensVinner.alv2.navn;
         })
     }
 
