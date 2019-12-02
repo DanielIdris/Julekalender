@@ -10,8 +10,10 @@ import {faGift} from "@fortawesome/free-solid-svg-icons";
 export class VinnerComponent implements OnInit {
 
     faGift = faGift;
-    title = "Ukjent";
-    imgUrl = '../../../assets/alvene/ukjent.jpg';
+    title1 = "Ukjent";
+    title2 = "Ukjent";
+    imgUrl1 = '../../../assets/alvene/ukjent.jpg';
+    imgUrl2 = '../../../assets/alvene/ukjent.jpg';
     @ViewChild('drumroll') el:ElementRef;
 
     constructor(private kalenderService: KalenderService) {
@@ -20,8 +22,10 @@ export class VinnerComponent implements OnInit {
     ngOnInit() {
         this.kalenderService.getDagensVinner().subscribe((dagensVinner: any) => {
             if(dagensVinner !== null){
-                this.imgUrl = dagensVinner.alv.bildeUrl;
-                this.title = dagensVinner.alv.navn;
+                this.imgUrl1 = dagensVinner.alv1.bildeUrl;
+                this.title1= dagensVinner.alv1.navn;
+                this.imgUrl2 = dagensVinner.alv2.bildeUrl;
+                this.title2 = dagensVinner.alv2.navn;
             }
         } )
     }
@@ -35,8 +39,8 @@ export class VinnerComponent implements OnInit {
             this.el.nativeElement.play();
 
             await this.sleep(5000);
-            this.imgUrl = alv.bildeUrl;
-            this.title = alv.navn;
+            this.imgUrl1 = alv.bildeUrl;
+            this.title1 = alv.navn;
         })
     }
 
