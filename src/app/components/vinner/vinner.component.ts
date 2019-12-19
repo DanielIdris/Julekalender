@@ -14,6 +14,7 @@ export class VinnerComponent implements OnInit {
     title2 = "Ukjent";
     imgUrl1 = '../../../assets/alvene/ukjent.jpg';
     imgUrl2 = '../../../assets/alvene/ukjent.jpg';
+    alleVinnerAktiv = false;
     @ViewChild('drumroll') el:ElementRef;
 
     constructor(private kalenderService: KalenderService) {
@@ -39,6 +40,7 @@ export class VinnerComponent implements OnInit {
             this.el.nativeElement.play();
 
             await this.sleep(5000);
+            this.alleVinnerAktiv = true;
             this.imgUrl1 = dagensVinner.alv1.bildeUrl;
             this.title1= dagensVinner.alv1.navn;
             this.imgUrl2 = dagensVinner.alv2.bildeUrl;
