@@ -23,6 +23,7 @@ export class VinnerComponent implements OnInit {
     ngOnInit() {
         this.kalenderService.getDagensVinner().subscribe((dagensVinner: any) => {
             if(dagensVinner !== null){
+                this.alleVinnerAktiv = true;
                 this.imgUrl1 = dagensVinner.alv1.bildeUrl;
                 this.title1= dagensVinner.alv1.navn;
                 this.imgUrl2 = dagensVinner.alv2.bildeUrl;
